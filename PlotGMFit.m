@@ -8,7 +8,7 @@ X = UVS(run).TrimWaves;
 Y1 = UVS(run).NormAbs;
 Y2 = UVS(run).GMM.FitAbs;
 
-plot(X,Y1,'-k',X,Y2,'--r')
+plot(X,Y1,'-k',X,Y2,'-r')
 
 Params = UVS(run).GMM.Params; % Pull out the Gaussian parameters
 [p,~] = size(Params);
@@ -21,7 +21,7 @@ for i = 1:k
     plot(X,Yi,'--b')
 end
 
-%plot(X,Params(end).*UVS(UVS(1).RefSpec).NormAbs,'k')
+plot(X,Params(end).*UVS(UVS(1).RefSpec).NormAbs,'--c')
 
 save(StructPath,'UVS')
 

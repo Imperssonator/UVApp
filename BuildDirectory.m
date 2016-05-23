@@ -9,17 +9,16 @@ function Directory = BuildDirectory(FolderName)
 
 % Input computer specfic pathway to the correct file
 if ispc
-    DirectoryPath= ['C:\Users\Mike\Documents\GitHub\Provincial_Bluffs\' FolderName '\']
+    DirectoryPath= ['C:\Users\Mike\Documents\GitHub\Provincial_Bluffs\' FolderName '\'];
 else
     DirectoryPath = ['/Users/Imperssonator/Documents/MATLAB/Provincial_Bluffs/' FolderName '/'];
 end
 
-cd(FolderName);
+cd(FolderName)
 
 D = dir('*.csv');
 
 cd ..
-
 
 Files = {D(:).name}';
 

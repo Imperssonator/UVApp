@@ -1,4 +1,4 @@
-function [] = NormalizeUV(StructPath,RefName)
+function [] = NormalizeUV(StructPath,options)
 
 %NormalizeUV Normalize UV Spectra Set
 %   Normalize the amorphous peak to the Reference spectra spec'd by
@@ -6,11 +6,17 @@ function [] = NormalizeUV(StructPath,RefName)
 %   normalize to
 
 load(StructPath);
+RefName = options.RefName;
 RefInd = 0;
-for i = 1:length(UVS)
-    if strcmp(RefName,UVS(i).Name)
-        RefInd = i;                 % RefInd is the element of the structure corresponding to the ref spectrum
-        break
+
+if strcmp(RefName,'default')
+    RefInd = 1;
+else
+    for i = 1:length(UVS)
+        if strcmp(RefName,UVS(i).Name)
+            RefInd = i;                 % RefInd is the element of the structure corresponding to the ref spectrum
+            break
+        end
     end
 end
 

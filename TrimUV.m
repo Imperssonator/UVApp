@@ -1,15 +1,16 @@
-function [] = TrimUV(StructPath)
+function [] = TrimUV(StructPath,options)
 
 load(StructPath);
+tr = options.trimRange;
 
 for i = 1:length(UVS)
-    RawAbsi = UVS(i).RawAbs;
+    BaseAbsi = UVS(i).BaseAbs;
     RawWavesi = UVS(i).Waves;
-    TrimLow = find(RawWavesi==375);
-    TrimHigh = find(RawWavesi==700);
+    TrimLow = find(RawWavesi==tr(1));
+    TrimHigh = find(RawWavesi==tr(2));
     
     TrimWavesi = RawWavesi(TrimLow:TrimHigh);
-    TrimAbsi = RawAbsi(TrimLow:TrimHigh);
+    TrimAbsi = BaseAbsi(TrimLow:TrimHigh);
     
     UVS(i).TrimAbs = TrimAbsi;
     UVS(i).TrimWaves = TrimWavesi;
