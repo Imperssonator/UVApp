@@ -135,24 +135,6 @@ set(handles.axes1,'FontSize',16)
 
 guidata(hObject,handles)
 
-
-% --- Executes when selected cell(s) is changed in uitable1.
-function uitable1_CellSelectionCallback(hObject, eventdata, handles)
-% hObject    handle to uitable1 (see GCBO)
-% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
-%	Indices: row and column indices of the cell(s) currently selecteds
-% handles    structure with handles and user data (see GUIDATA)
-
-if size(eventdata.Indices,1)>0
-    set(handles.plotSpecNum,'String',num2str(eventdata.Indices(1)))
-end
-
-if isfield(handles,'UVS')
-    fitPlot_Callback(hObject, eventdata, handles)
-end
-
-guidata(hObject,handles)
-
 % --------------------------------------------------------------------
 function Untitled_1_Callback(hObject, eventdata, handles)
 % hObject    handle to Untitled_1 (see GCBO)
@@ -205,4 +187,15 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
+
+% --- Executes when selected cell(s) is changed in uitable1.
+function uitable1_CellSelectionCallback(hObject, eventdata, handles)
+% hObject    handle to uitable1 (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.TABLE)
+%	Indices: row and column indices of the cell(s) currently selecteds
+% handles    structure with handles and user data (see GUIDATA)
+
+set(handles.plotSpecNum,'String',num2str(eventda
+
+disp(eventdata)
 

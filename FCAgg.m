@@ -6,7 +6,7 @@ function out = FCAgg(Params,En,M)
 %    3: Peak width of FC Peaks
 
 % Hard coded physical parameters
-S = 1.05;       % Huang Rhys Factor ....
+S = 1.0;       % Huang Rhys Factor ....
 Ep = 0.18;      % 0.18 eV C=C symmetric stretch
 N = (0:M);
 E00 = Params(1);            % Convert to Energy
@@ -21,7 +21,7 @@ for m = 0:M
     Nm = N(N~=m);
     Gm = sum(S.^Nm ./ (factorial(Nm) .* (Nm - m)));
     GaussParams = [1; Avg; FCwid];
-    out = out + exp(-S)*S^m/factorial(m) ...
+    out = out + S^m/factorial(m) ...
               * (1 - EB*exp(-S)/(2*Ep) * Gm)^2 ...
               * GaussPeak(GaussParams,1,En);
 end

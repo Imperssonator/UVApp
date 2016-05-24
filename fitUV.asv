@@ -106,12 +106,12 @@ for i = 1:length(UVS)
             initParams = [options.iE00, ...
                         options.iEB, ...
                         options.iFCwid, ...
-                        options.iAggFrac];
+                        options.iAggFrac, ...
             
             Bounds =     [options.limE00; ...
                         options.limEB; ...
                         options.limFCwid; ...
-                        options.limAggFrac];
+                        options.limAggFrac; ...
             
             % Build optimization problem
             Problem = struct();
@@ -128,13 +128,11 @@ for i = 1:length(UVS)
             [FitParams,Resnorm,Residual] = lsqcurvefit(Problem);
             
             % Generate the fit spectrum
-            UVS(i).FitAbs = FC_Pure(FitParams,UVS(i).TrimEn,options.M); % Fit aggregate absorbance
-            UVS(i).FitAmor = UVS(i).NormAbs - UVS(i).FitAbs;    % Total raw absorbance minus fit aggregate absorbance
+            UVS(i).FitAbs = FC_Pure(FitParams,UVS(i).TrimEn,options.M);
+            UVS(i).FitAmor = UVS(i).NormAbs - UVS(i).FitAbs;    % Total raw absorbance 
             UVS(i).FitParams = FitParams;
             UVS(i).EB = FitParams(2);
-            AggArea = trapz(UVS(i).TrimWaves,UVS(i).FitAbs);
-            AmorArea = trapz(UVS(i).TrimWaves,UVS(i).FitAmor);
-            UVS(i).AggFrac = 100 * AggArea / ( 1.39*AmorArea + AggArea);    % Aggregated chains absorb 1.39x stronger than amorphous
+            UVS(i).AggFrac = trapz(UVS(i).TrimWaves,UVS(i).
             UVS(i).M = options.M;
     end
     
