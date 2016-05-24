@@ -19,8 +19,6 @@ options.iAggFrac = 0.6;
 options.fitRange = [550, 650];
 options.limE00 = [options.iE00-options.E00tol,...
                     options.iE00+options.E00tol];
-options.limGE = [options.iGE-options.GEtol,...
-                    options.iGE+options.GEtol];
 options.limEB = [0, 0.5];
 options.limFCwid = [0, 0.2];
 options.limAggFrac = [0, 1];
