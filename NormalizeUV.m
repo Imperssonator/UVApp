@@ -1,11 +1,10 @@
-function [] = NormalizeUV(StructPath,options)
+function UVS = NormalizeUV(UVS,options)
 
 %NormalizeUV Normalize UV Spectra Set
 %   Normalize the amorphous peak to the Reference spectra spec'd by
 %   RefName: string of the name (no file extension) of the spectrum to
 %   normalize to
 
-load(StructPath);
 RefName = options.RefName;
 RefInd = 0;
 
@@ -39,8 +38,6 @@ for j = 1:length(UVS)
     NormAbs=TrimAbsi./TrimAbsi(NormIndj);
     UVS(j).NormAbs = NormAbs;
 end
-
-save(StructPath,'UVS')
 
 end
 
