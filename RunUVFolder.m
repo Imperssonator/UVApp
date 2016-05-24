@@ -1,15 +1,15 @@
-function UVS = RunUVFolder(FolderName,options)
+function SP = RunUVFolder(FolderName,options)
 
 Directory = BuildDirectory(FolderName);
-UVS = BuildStruct(Directory);
-UVS = BaselineUV(UVS,options);
-UVS = TrimUV(UVS,options);
-UVS = NormalizeUV(UVS,options);
-UVS = fitUV(UVS,options);
+SP = BuildStruct(Directory);
+BaselineUV(SP,options);
+TrimUV(SP,options);
+NormalizeUV(SP,options);
+fitUV(SP,options);
 
-% PlotAllUV(SP);
+PlotAllUV(SP);
 % PlotEB(StructPath);
-% PlotFC_Pure(SP,7);
+PlotFC_Pure(SP,7);
 % PlotGMFit(StructPath,24);
 
 end

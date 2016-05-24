@@ -1,5 +1,6 @@
-function UVS = TrimUV(UVS,options)
+function [] = TrimUV(StructPath,options)
 
+load(StructPath);
 tr = options.trimRange;
 
 for i = 1:length(UVS)
@@ -14,6 +15,8 @@ for i = 1:length(UVS)
     UVS(i).TrimAbs = TrimAbsi;
     UVS(i).TrimWaves = TrimWavesi;
 end
+
+save(StructPath,'UVS')
 
 end
 
