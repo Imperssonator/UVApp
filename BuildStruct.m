@@ -1,4 +1,4 @@
-function StructPath = BuildStruct(Directory)
+function UVS = BuildStruct(Directory)
 
 UVS = struct();
 
@@ -21,8 +21,5 @@ for i = 1:NumFiles
         Folder = FilePath(1:LastSlash);
     end
 end
-
-StructPath = [Folder 'UVStruct'];
-save(StructPath,'UVS')
 
 end
