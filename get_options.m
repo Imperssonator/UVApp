@@ -6,7 +6,7 @@ switch lower(get(handles.sampleType,'Value'))
         options = options_film_pure();
         
     case 2
-        options = options_sol_pure();
-%         options = options_sol_spec();
+%         options = options_sol_pure();
+        options = options_sol_spec();
         
 end

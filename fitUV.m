@@ -57,6 +57,46 @@ for i = 1:length(UVS)
             
         case 'spec'
             
+            disp('fitting FC_Spec')
+            
+            % Build initial parameters
+            UVS(i).ParamNames = {'E00', 'EB', 'FCwid', 'AggFrac', 'Total Scale'};
+            initParams = [options.iE00, ...
+                        options.iEB, ...
+                        options.iFCwid, ...
+                        options.iAggFrac, ...
+                        options.iScale];
+
+            Bounds =     [options.limE00; ...
+                        options.limEB; ...
+                        options.limFCwid; ...
+                        options.limAggFrac; ...
+                        options.limScale];
+            
+            % Build optimization problem
+            Problem = struct();
+            fit_opts = optimoptions('lsqcurvefit');
+            Problem.options = fit_opts;
+            Problem.objective = ...
+                @(Params,En) FC_Spec(Params,En,options.M, ...
+                                        UVS(UVS(i).RefSpec).NormAbs(fit_ind(1):fit_ind(2)));
+            Problem.x0 = initParams;
+            Problem.LB = Bounds(:,1)';
+            Problem.UB = Bounds(:,2)';
+            Problem.xdata = FitEn;
+            Problem.ydata = FitAbs;
+            Problem.solver = 'lsqcurvefit';
+            Problem.Algorithm = 'levenberg-marquardt';
+            [FitParams,Resnorm,Residual] = lsqcurvefit(Problem);
+            
+            % Generate the fit spectrum
+            UVS(i).FitAbs = FC_Spec(FitParams,UVS(i).TrimEn,options.M, ...
+                                      UVS(UVS(i).RefSpec).NormAbs);
+            UVS(i).FitParams = FitParams;
+            UVS(i).EB = FitParams(2);
+            UVS(i).AggFrac = FitParams(4);
+            UVS(i).M = options.M;
+            
         case 'none'
             
             disp('fitting FC_Pure')
