@@ -2,3 +2,5 @@
 *.CSV
 *.mat
 **/*.mat
+UVApp/*
+*.prj
