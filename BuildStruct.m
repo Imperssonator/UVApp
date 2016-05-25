@@ -1,11 +1,14 @@
 function UVS = BuildStruct(Directory)
 
+hread = waitbar(0,'Reading Files...');
+
 UVS = struct();
 
 NumFiles = length(Directory);
 
 count = 0;
 for i = 1:NumFiles
+    waitbar(i/NumFiles,hread);
     FilePath = Directory{i,1};
     [Waves,RawAbs] = csv2mat(FilePath);
     if Waves == 0
@@ -21,5 +24,5 @@ for i = 1:NumFiles
         Folder = FilePath(1:LastSlash);
     end
 end
-
+close(hread)
 end
