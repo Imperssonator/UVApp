@@ -6,12 +6,13 @@ function out = FCAgg(Params,En,M)
 %    3: Peak width of FC Peaks
 
 % Hard coded physical parameters
-S = 1.0;       % Huang Rhys Factor ....
+% S = 1;       % Huang Rhys Factor ....
 Ep = 0.18;      % 0.18 eV C=C symmetric stretch
 N = (0:M);
 E00 = Params(1);            % Convert to Energy
 EB = Params(2);
 FCwid = Params(3);
+S = Params(5);
 
 out = zeros(length(En),1);
 

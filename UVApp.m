@@ -22,7 +22,7 @@ function varargout = UVApp(varargin)
 
 % Edit the above text to modify the response to help UVApp
 
-% Last Modified by GUIDE v2.5 24-May-2016 11:58:30
+% Last Modified by GUIDE v2.5 03-Jun-2016 16:21:18
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -81,6 +81,20 @@ saveFilePath = [folderPath, 'UV Results.csv'];
 handles.options = get_options(handles);
 
 handles.UVS = RunUVFolder(handles.folderPath,handles.options);
+handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}', {handles.UVS(:).S}'];
+set(handles.uitable1,'Data',handles.tableData);
+
+guidata(hObject,handles);
+
+% --- Executes on button press in Refit.
+function Refit_Callback(hObject, eventdata, handles)
+% hObject    handle to Refit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+handles.options = get_options(handles);
+
+handles.UVS = RunUVFolder(handles.folderPath,handles.options);
 handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
 set(handles.uitable1,'Data',handles.tableData);
 
@@ -132,6 +146,7 @@ PlotFit(handles,plotSpecNum)
 set(handles.axes1.XLabel,'String','Wavelength (nm)')
 set(handles.axes1.YLabel,'String','Absorbance')
 set(handles.axes1,'FontSize',16)
+set(handles.axes1,'YLim',[-0.2,1.2]);
 
 guidata(hObject,handles)
 
@@ -204,5 +219,14 @@ function popupmenu2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes during object creation, after setting all properties.
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes1
 
 

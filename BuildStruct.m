@@ -10,7 +10,12 @@ count = 0;
 for i = 1:NumFiles
     waitbar(i/NumFiles,hread);
     FilePath = Directory{i,1};
-    [Waves,RawAbs] = csv2mat(FilePath);
+    switch lower(FilePath(end-2:end))
+        case 'wav'
+            [Waves,RawAbs] = wav2mat(FilePath);
+        case 'csv'
+            [Waves,RawAbs] = csv2mat(FilePath);
+    end
     if Waves == 0
     else
         count = count+1;

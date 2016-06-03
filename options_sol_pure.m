@@ -14,14 +14,16 @@ options.iE00 = 2;
 options.iEB = 0.2;
 options.iFCwid = 0.04;
 options.iAggFrac = 0.6;
+options.iS = 1;
 
 % Fitting parameters, constraints
-options.fitRange = [550, 650];
+options.fitRange = [555, 630];
 options.limE00 = [options.iE00-options.E00tol,...
                     options.iE00+options.E00tol];
-options.limEB = [0, 0.5];
-options.limFCwid = [0, 0.2];
+options.limEB = [-1, 0.5];
+options.limFCwid = [0, 0.1];
 options.limAggFrac = [0, 1];
+options.limS = [1, 1];
 
 % Fitting parameters, misc.
 options.M = 4;

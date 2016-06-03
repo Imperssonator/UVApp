@@ -102,16 +102,18 @@ for i = 1:length(UVS)
             disp('fitting FC_Pure')
             
             % Build initial parameters
-            UVS(i).ParamNames = {'E00', 'EB', 'FCwid', 'AggFrac', 'Unused', 'Unused'};
+            UVS(i).ParamNames = {'E00', 'EB', 'FCwid', 'AggFrac', 'S'};
             initParams = [options.iE00, ...
                         options.iEB, ...
                         options.iFCwid, ...
-                        options.iAggFrac];
+                        options.iAggFrac, ...
+                        options.iS];
             
             Bounds =     [options.limE00; ...
                         options.limEB; ...
                         options.limFCwid; ...
-                        options.limAggFrac];
+                        options.limAggFrac; ...
+                        options.limS];
             
             % Build optimization problem
             Problem = struct();
@@ -125,6 +127,7 @@ for i = 1:length(UVS)
             Problem.ydata = FitAbs;
             Problem.solver = 'lsqcurvefit';
             Problem.Algorithm = 'levenberg-marquardt';
+            Problem.TolFun = 1e-8;
             [FitParams,Resnorm,Residual] = lsqcurvefit(Problem);
             
             % Generate the fit spectrum
@@ -136,6 +139,7 @@ for i = 1:length(UVS)
             AmorArea = trapz(UVS(i).TrimWaves,UVS(i).FitAmor);
             UVS(i).AggFrac = 100 * AggArea / ( 1.39*AmorArea + AggArea);    % Aggregated chains absorb 1.39x stronger than amorphous
             UVS(i).M = options.M;
+            UVS(i).S = FitParams(5);
     end
     
 end

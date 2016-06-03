@@ -10,7 +10,10 @@ function Directory = BuildDirectory(FolderName)
 % Input computer specfic pathway to the correct file
 ad = pwd;
 cd(FolderName)
-D = dir('*.csv');
+csv = dir('*.CSV');
+wav = dir('*.WAV');
+% CSV = dir('*.CSV');
+D = [csv;wav];
 cd(ad)
 
 FileNames = {D(:).name}';   % File names
@@ -21,5 +24,7 @@ Directory = {}; % File Paths
 for i = 1:NumFiles
     Directory{i,1} = [FolderName FileNames{i,1}];
 end
+
+Directory
 
 end
