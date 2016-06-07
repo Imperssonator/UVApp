@@ -81,7 +81,7 @@ saveFilePath = [folderPath, 'UV Results.csv'];
 handles.options = get_options(handles);
 
 handles.UVS = RunUVFolder(handles.folderPath,handles.options);
-handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}', {handles.UVS(:).S}'];
+handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
 set(handles.uitable1,'Data',handles.tableData);
 
 guidata(hObject,handles);
