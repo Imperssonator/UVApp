@@ -84,6 +84,9 @@ handles.UVS = RunUVFolder(handles.folderPath,handles.options);
 handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
 set(handles.uitable1,'Data',handles.tableData);
 
+UVS = handles.UVS;
+save('UVStest','UVS')
+
 guidata(hObject,handles);
 
 % --- Executes on button press in Refit.

@@ -39,7 +39,7 @@ end
 
 out = '';
 for i = 1:length(str)
-    if ~isempty(str2num(str(i))) || strcmp(str(i),'.')
+    if ~isempty(str2num(str(i))) || strcmp(str(i),'.') || strcmp(str(i),'-')
         out = [out, str(i)];
     end
 end
