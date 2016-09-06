@@ -149,7 +149,7 @@ PlotFit(handles,plotSpecNum)
 set(handles.axes1.XLabel,'String','Wavelength (nm)')
 set(handles.axes1.YLabel,'String','Absorbance')
 set(handles.axes1,'FontSize',16)
-set(handles.axes1,'YLim',[-0.2,1.2]);
+% set(handles.axes1,'YLim',[-0.2,1.2]);
 
 guidata(hObject,handles)
 

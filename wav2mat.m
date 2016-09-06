@@ -28,6 +28,8 @@ Waves = (str2num(Num{1}{13}):str2num(Num{2}{13}))';
 RawAbs = cellfun(@(x) str2num(x),Num{1}(14:14+length(Waves)-1),'UniformOutput',false);
 RawAbs = cell2mat(RawAbs);
 
+save('wav_debug')
+
 end
 
 function out = strfix(str)

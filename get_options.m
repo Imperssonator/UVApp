@@ -1,6 +1,6 @@
 function options = get_options(handles)
 
-switch lower(get(handles.sampleType,'Value'))
+switch get(handles.sampleType,'Value')
     
     case 1
         options = options_film_pure();
