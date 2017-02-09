@@ -97,9 +97,12 @@ function Refit_Callback(hObject, eventdata, handles)
 
 handles.options = get_options(handles);
 
-handles.UVS = RunUVFolder(handles.folderPath,handles.options);
+handles.UVS = RefitUV(handles.UVS,handles.options);
 handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
 set(handles.uitable1,'Data',handles.tableData);
+
+UVS=handles.UVS;
+save('UVStest','UVS')
 
 guidata(hObject,handles);
 

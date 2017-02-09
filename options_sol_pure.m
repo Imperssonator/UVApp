@@ -17,7 +17,7 @@ options.iAggFrac = 0.6;
 options.iS = 1;
 
 % Fitting parameters, constraints
-options.fitRange = [555, 630];
+options.fitRange = [570, 650];
 options.limE00 = [options.iE00-options.E00tol,...
                     options.iE00+options.E00tol];
 options.limEB = [-1, 0.5];

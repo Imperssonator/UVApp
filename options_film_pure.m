@@ -22,7 +22,7 @@ options.iGE = 2.6;          % initial energy of amorphous gaussian
 options.iGsig = 0.23;        % initial width of amorphous gaussian
 
 % Fitting parameters, constraints
-options.fitRange = [558, 630];
+options.fitRange = [558, 660];
 options.limE00 = [options.iE00-options.E00tol,...
                     options.iE00+options.E00tol];
 options.limGE = [options.iGE-options.GEtol,...
@@ -35,4 +35,7 @@ options.limS = [0.9, 0.9];
 
 % Fitting parameters, misc.
 options.M = 4;
+
+% For Dichroic Ratio Calc.
+options.wavelength00 = 613;
 
