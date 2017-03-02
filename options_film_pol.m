@@ -1,17 +1,17 @@
-function options = options_film_pure()
+function options = options_film_pol()
 
 options = struct();
 
 options.specType = 'film';   % Type of spectra
 options.RefName = 'default';
-options.trimRange = [375, 700];
-options.baselineRange = 700;
+options.trimRange = [430, 700];
+options.baselineRange = 688;
 options.amor = 'none';     % What type of amorphous spectrum to fit
 options.E00tol = 0.02;       % tolerance for the position of E00
 options.GEtol = 0.14;
 
 % Fitting parameters, initial
-options.iE00 = 2.0226;
+options.iE00 = 2.0193;
 options.iEB = 0;
 options.iFCwid = 0.04;
 options.iAggFrac = 0.6;
@@ -22,7 +22,7 @@ options.iGE = 2.6;          % initial energy of amorphous gaussian
 options.iGsig = 0.23;        % initial width of amorphous gaussian
 
 % Fitting parameters, constraints
-options.fitWaves = [561,562,563,564,611,612,613,614,625,635,645];
+options.fitWaves = [561,562,563,564,611,612,613,614,615,625,635,645];
 options.fitRange = [558, 660];
 options.limE00 = [options.iE00-options.E00tol,...
                     options.iE00+options.E00tol];

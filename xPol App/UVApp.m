@@ -81,7 +81,7 @@ saveFilePath = [folderPath, 'UV Results.csv'];
 handles.options = get_options(handles);
 
 handles.UVS = RunUVFolder(handles.folderPath,handles.options);
-handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
+handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).DC}'];
 set(handles.uitable1,'Data',handles.tableData);
 
 UVS = handles.UVS;
@@ -98,7 +98,7 @@ function Refit_Callback(hObject, eventdata, handles)
 handles.options = get_options(handles);
 
 handles.UVS = RefitUV(handles.UVS,handles.options);
-handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).EB}', {handles.UVS(:).AggFrac}'];
+handles.tableData = [{handles.UVS(:).Name}', {handles.UVS(:).DC}'];
 set(handles.uitable1,'Data',handles.tableData);
 
 UVS=handles.UVS;
@@ -148,7 +148,7 @@ function fitPlot_Callback(hObject, eventdata, handles)
 
 plotSpecNum = uint8(str2num(get(handles.plotSpecNum,'String')));
 
-PlotFit(handles,plotSpecNum)
+PlotPol(handles,plotSpecNum)
 set(handles.axes1.XLabel,'String','Wavelength (nm)')
 set(handles.axes1.YLabel,'String','Absorbance')
 set(handles.axes1,'FontSize',16)

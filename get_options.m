@@ -8,5 +8,8 @@ switch get(handles.sampleType,'Value')
     case 2
         options = options_sol_pure();
 %         options = options_sol_spec();
+
+    case 3
+        options = options_film_pol();
         
 end
