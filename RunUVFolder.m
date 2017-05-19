@@ -9,10 +9,12 @@ UVS = BaselineUV(UVS,options);
 waitbar(0.6,hwait,'Trimming Wavelength Range...');
 UVS = TrimUV(UVS,options);
 waitbar(0.7,hwait,'Normalizing...');
-UVS = NormalizeUV(UVS,options);
+UVS = NormalizeUV(UVS);
 waitbar(0.8,hwait,'Fitting Spano Model...');
 UVS = fitUV(UVS,options);
 close(hwait)
+
+save('uv_results','UVS')
 
 % PlotAllUV(SP);
 % PlotEB(StructPath);
