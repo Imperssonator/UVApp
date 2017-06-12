@@ -3,16 +3,18 @@ function UVS_pol = PolarStruct(UVS)
 % First, find the polarization of each sample, store that, then remove the
 % polarization from the names to help find matches
 
+re_p='(?<![a-zA-Z])[pP]\d\d';
+
 i=1;
 while i<=length(UVS)
     
-    p_loc = regexp(UVS(i).Name,'[pP]\d\d');
+    p_loc = regexp(UVS(i).Name,re_p);
     
     if ~isempty(p_loc)
         
         UVS(i).p = str2num(UVS(i).Name(p_loc+1:p_loc+2));
         
-        no_pol_split = regexp(UVS(i).Name,'[pP]\d\d','split');
+        no_pol_split = regexp(UVS(i).Name,re_p,'split');
         name_no_pol = [no_pol_split{:}];
         UVS(i).name_no_pol = name_no_pol;
         

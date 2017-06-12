@@ -13,6 +13,8 @@ UVS = CalcDC(UVS,options);
 
 close(hwait)
 
+save('UVS','UVS')
+
 % PlotAllUV(SP);
 % PlotEB(StructPath);
 % PlotFC_Pure(SP,7);

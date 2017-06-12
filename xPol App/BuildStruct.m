@@ -40,6 +40,8 @@ for i = 1:NumFiles
     end
 end
 
+save('UVS0','UVS')
+
 close(hread)
 
 end
